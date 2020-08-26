@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:login_signup/components/have_an_account_check.dart';
 import 'package:login_signup/components/rounded_button.dart';
-import 'package:login_signup/constants.dart';
-import 'package:login_signup/screens/login/login_screen.dart';
-import 'package:login_signup/screens/signup/signup_screen.dart';
-import 'package:login_signup/screens/welcome/components/background.dart';
+import 'package:login_signup/components/rounded_input_field.dart';
+import 'package:login_signup/components/rounded_password_field.dart';
+import 'package:login_signup/screens/login/components/background.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:login_signup/screens/signup/signup_screen.dart';
 
 class Body extends StatelessWidget {
+  const Body({
+    Key key,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -16,32 +21,28 @@ class Body extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Welcome!',
+              "LOGIN",
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: size.height * 0.05),
+            SizedBox(height: size.height * 0.03),
             SvgPicture.asset(
-              "assets/icons/chat.svg",
-              height: size.height * 0.45,
+              "assets/icons/login.svg",
+              height: size.height * 0.35,
             ),
-            SizedBox(height: size.height * 0.05),
+            SizedBox(height: size.height * 0.03),
+            RoundedInputField(
+              hintText: "Your Email",
+              onChanged: (value) {},
+            ),
+            RoundedPasswordField(
+              onChanged: (value) {},
+            ),
             RoundedButton(
               text: "LOGIN",
-              press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return LoginScreen();
-                    },
-                  ),
-                );
-              },
+              press: () {},
             ),
-            RoundedButton(
-              text: "SIGN UP",
-              color: primaryLightColor,
-              textColor: Colors.black,
+            SizedBox(height: size.height * 0.03),
+            HaveAnAccountCheck(
               press: () {
                 Navigator.push(
                   context,
@@ -52,7 +53,7 @@ class Body extends StatelessWidget {
                   ),
                 );
               },
-            ),
+            )
           ],
         ),
       ),
