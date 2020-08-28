@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:login_signup/components/have_an_account_check.dart';
-import 'package:login_signup/components/rounded_button.dart';
-import 'package:login_signup/components/rounded_input_field.dart';
-import 'package:login_signup/components/rounded_password_field.dart';
 import 'package:login_signup/screens/login/components/background.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:login_signup/screens/signup/signup_screen.dart';
+import 'package:login_signup/screens/login/components/login_form.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
   const Body({
     Key key,
   }) : super(key: key);
 
+  @override
+  _BodyState createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -20,40 +20,7 @@ class Body extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              "LOGIN",
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: size.height * 0.03),
-            SvgPicture.asset(
-              "assets/icons/login.svg",
-              height: size.height * 0.35,
-            ),
-            SizedBox(height: size.height * 0.03),
-            RoundedInputField(
-              hintText: "Your Email",
-              onChanged: (value) {},
-            ),
-            RoundedPasswordField(
-              onChanged: (value) {},
-            ),
-            RoundedButton(
-              text: "LOGIN",
-              press: () {},
-            ),
-            SizedBox(height: size.height * 0.03),
-            HaveAnAccountCheck(
-              press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return SignUpScreen();
-                    },
-                  ),
-                );
-              },
-            )
+            LoginForm(),
           ],
         ),
       ),
